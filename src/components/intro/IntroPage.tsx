@@ -198,7 +198,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               className="flex items-center justify-center space-x-4 mb-16"
             >
               <motion.button
-                onClick={onEnter}
+                onClick={handleSignUp}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white text-black rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
@@ -469,7 +469,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
             </p>
             <div className="flex items-center justify-center space-x-4">
               <motion.button
-                onClick={onEnter}
+                onClick={handleSignUp}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
