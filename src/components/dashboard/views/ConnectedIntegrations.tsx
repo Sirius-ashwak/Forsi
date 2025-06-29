@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Settings, CheckCircle, Clock, AlertCircle, Factory, Truck, Globe, Database } from 'lucide-react';
 
 export const ConnectedIntegrations: React.FC = () => {
-  const integrations = [
+  const [integrations, setIntegrations] = useState([
     { 
+      id: 'sap-erp',
       name: 'SAP ERP', 
       status: 'Connected', 
       icon: <Factory className="w-6 h-6 text-blue-400" />, 
@@ -14,6 +15,7 @@ export const ConnectedIntegrations: React.FC = () => {
       dataPoints: '15,247'
     },
     { 
+      id: 'oracle-scm',
       name: 'Oracle SCM Cloud', 
       status: 'Connected', 
       icon: <Database className="w-6 h-6 text-orange-400" />, 
@@ -23,6 +25,7 @@ export const ConnectedIntegrations: React.FC = () => {
       dataPoints: '8,932'
     },
     { 
+      id: 'fedex-api',
       name: 'FedEx API', 
       status: 'Pending', 
       icon: <Truck className="w-6 h-6 text-purple-400" />, 
@@ -32,6 +35,7 @@ export const ConnectedIntegrations: React.FC = () => {
       dataPoints: null
     },
     { 
+      id: 'dynamics-365',
       name: 'Microsoft Dynamics 365', 
       status: 'Available', 
       icon: <Factory className="w-6 h-6 text-blue-400" />, 
@@ -41,6 +45,7 @@ export const ConnectedIntegrations: React.FC = () => {
       dataPoints: null
     },
     { 
+      id: 'ups-tracking',
       name: 'UPS Tracking', 
       status: 'Available', 
       icon: <Truck className="w-6 h-6 text-yellow-600" />, 
@@ -50,6 +55,7 @@ export const ConnectedIntegrations: React.FC = () => {
       dataPoints: null
     },
     { 
+      id: 'iot-sensors',
       name: 'IoT Sensor Network', 
       status: 'Available', 
       icon: <Globe className="w-6 h-6 text-green-400" />, 
@@ -58,7 +64,53 @@ export const ConnectedIntegrations: React.FC = () => {
       type: 'IoT Platform',
       dataPoints: null
     },
-  ];
+  ]);
+
+  const handleConnectSystem = (integrationId: string) => {
+    setIntegrations(prev => prev.map(integration => 
+      integration.id === integrationId 
+        ? { 
+            ...integration, 
+            status: 'Pending',
+            color: 'yellow'
+          }
+        : integration
+    ));
+    
+    // Simulate connection process
+    setTimeout(() => {
+      setIntegrations(prev => prev.map(integration => 
+        integration.id === integrationId 
+          ? { 
+              ...integration, 
+              status: 'Connected',
+              color: 'green',
+              lastSync: 'Just now',
+              dataPoints: Math.floor(Math.random() * 10000 + 1000).toString()
+            }
+          : integration
+      ));
+    }, 3000);
+  };
+
+  const handleCompleteSetup = (integrationId: string) => {
+    setIntegrations(prev => prev.map(integration => 
+      integration.id === integrationId 
+        ? { 
+            ...integration, 
+            status: 'Connected',
+            color: 'green',
+            lastSync: 'Just now',
+            dataPoints: Math.floor(Math.random() * 10000 + 1000).toString()
+          }
+        : integration
+    ));
+  };
+
+  const handleSettings = (integrationId: string) => {
+    console.log(`Opening settings for ${integrationId}`);
+    // Here you would typically open a settings modal or navigate to settings page
+  };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -99,6 +151,7 @@ export const ConnectedIntegrations: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => console.log('Add integration clicked')}
             className="flex items-center space-x-3 px-6 py-3 bg-white text-black rounded-xl font-semibold hover:bg-gray-100 transition-colors self-start md:self-auto"
           >
             <Plus className="w-5 h-5" />
@@ -112,7 +165,9 @@ export const ConnectedIntegrations: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">Connected Systems</p>
-                <p className="text-3xl font-bold text-green-400">2</p>
+                <p className="text-3xl font-bold text-green-400">
+                  {integrations.filter(i => i.status === 'Connected').length}
+                </p>
               </div>
               <CheckCircle className="w-8 h-8 text-green-400" />
             </div>
@@ -122,7 +177,9 @@ export const ConnectedIntegrations: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">Pending Setup</p>
-                <p className="text-3xl font-bold text-yellow-400">1</p>
+                <p className="text-3xl font-bold text-yellow-400">
+                  {integrations.filter(i => i.status === 'Pending').length}
+                </p>
               </div>
               <Clock className="w-8 h-8 text-yellow-400" />
             </div>
@@ -132,7 +189,9 @@ export const ConnectedIntegrations: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">Available</p>
-                <p className="text-3xl font-bold text-gray-400">3</p>
+                <p className="text-3xl font-bold text-gray-400">
+                  {integrations.filter(i => i.status === 'Available').length}
+                </p>
               </div>
               <Plus className="w-8 h-8 text-gray-400" />
             </div>
@@ -142,7 +201,12 @@ export const ConnectedIntegrations: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm font-medium">Data Points</p>
-                <p className="text-3xl font-bold text-blue-400">24.2K</p>
+                <p className="text-3xl font-bold text-blue-400">
+                  {integrations
+                    .filter(i => i.dataPoints)
+                    .reduce((sum, i) => sum + parseInt(i.dataPoints!.replace(',', '')), 0)
+                    .toLocaleString()}
+                </p>
               </div>
               <Database className="w-8 h-8 text-blue-400" />
             </div>
@@ -153,7 +217,7 @@ export const ConnectedIntegrations: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {integrations.map((integration, index) => (
             <motion.div
-              key={integration.name}
+              key={integration.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -180,6 +244,7 @@ export const ConnectedIntegrations: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  onClick={() => handleSettings(integration.id)}
                   className="p-2 hover:bg-gray-800 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                 >
                   <Settings className="w-5 h-5 text-gray-400" />
@@ -218,6 +283,7 @@ export const ConnectedIntegrations: React.FC = () => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => handleConnectSystem(integration.id)}
                     className="w-full py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors"
                   >
                     Connect System
@@ -228,6 +294,7 @@ export const ConnectedIntegrations: React.FC = () => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => handleCompleteSetup(integration.id)}
                     className="w-full py-2 bg-yellow-500/20 border border-yellow-500/30 hover:bg-yellow-500/30 rounded-lg text-sm font-medium text-yellow-400 transition-colors"
                   >
                     Complete Setup
@@ -248,12 +315,13 @@ export const ConnectedIntegrations: React.FC = () => {
               { name: 'IoT Sensors', count: 15, icon: <Globe className="w-6 h-6" />, color: 'purple' },
               { name: 'Analytics', count: 6, icon: <Database className="w-6 h-6" />, color: 'orange' }
             ].map((category, index) => (
-              <motion.div
+              <motion.button
                 key={category.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors cursor-pointer"
+                onClick={() => console.log(`Browse ${category.name} integrations`)}
+                className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors cursor-pointer text-left"
               >
                 <div className="flex items-center space-x-4">
                   <div className={`w-12 h-12 bg-${category.color}-500/20 rounded-xl flex items-center justify-center`}>
@@ -266,7 +334,7 @@ export const ConnectedIntegrations: React.FC = () => {
                     <p className="text-gray-400 text-sm">{category.count} available</p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>

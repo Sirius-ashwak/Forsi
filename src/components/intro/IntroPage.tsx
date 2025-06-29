@@ -46,6 +46,31 @@ const stats = [
 ];
 
 export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
+  const handleNavClick = (section: string) => {
+    console.log(`Navigate to ${section}`);
+    // Here you would implement navigation logic
+  };
+
+  const handleSignIn = () => {
+    console.log('Sign in clicked');
+    // Here you would implement sign in logic
+  };
+
+  const handleWatchDemo = () => {
+    console.log('Watch demo clicked');
+    // Here you would implement demo video logic
+  };
+
+  const handleContactSales = () => {
+    console.log('Contact sales clicked');
+    // Here you would implement contact sales logic
+  };
+
+  const handleCodeLanguageChange = (language: string) => {
+    console.log(`Switch to ${language} code example`);
+    // Here you would implement language switching
+  };
+
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Background grid */}
@@ -69,16 +94,36 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
         
         <div className="flex items-center space-x-6">
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a>
-            <a href="#pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
-            <a href="#docs" className="text-gray-400 hover:text-white transition-colors flex items-center space-x-1">
+            <motion.button
+              onClick={() => handleNavClick('features')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Features
+            </motion.button>
+            <motion.button
+              onClick={() => handleNavClick('pricing')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Pricing
+            </motion.button>
+            <motion.button
+              onClick={() => handleNavClick('docs')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-gray-400 hover:text-white transition-colors flex items-center space-x-1"
+            >
               <span>Documentation</span>
               <ArrowRight className="w-3 h-3" />
-            </a>
+            </motion.button>
           </nav>
           
           <div className="flex items-center space-x-4">
             <motion.button
+              onClick={handleSignIn}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
@@ -151,6 +196,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               Start Free Trial
             </motion.button>
             <motion.button
+              onClick={handleWatchDemo}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border border-gray-700 text-white rounded-lg font-semibold text-lg hover:border-gray-600 transition-colors"
@@ -191,15 +237,16 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
           <p className="text-center text-gray-400 mb-8">Trusted by leading enterprises worldwide</p>
           <div className="flex items-center justify-center space-x-8 md:space-x-12 overflow-x-auto pb-4">
             {integrationLogos.map((logo, index) => (
-              <motion.div
+              <motion.button
                 key={logo.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                onClick={() => console.log(`Learn more about ${logo.name} integration`)}
                 className="flex-shrink-0 w-16 h-16 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center hover:border-gray-700 transition-colors cursor-pointer"
               >
                 <span className="text-2xl">{logo.icon}</span>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </motion.div>
@@ -219,18 +266,49 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
               <div className="flex items-center space-x-4 text-sm text-gray-400">
-                <button className="bg-gray-800 px-3 py-1 rounded">Python</button>
-                <button className="px-3 py-1 rounded hover:bg-gray-800 transition-colors">JavaScript</button>
-                <button className="px-3 py-1 rounded hover:bg-gray-800 transition-colors">REST API</button>
+                <motion.button
+                  onClick={() => handleCodeLanguageChange('python')}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gray-800 px-3 py-1 rounded hover:bg-gray-700 transition-colors"
+                >
+                  Python
+                </motion.button>
+                <motion.button
+                  onClick={() => handleCodeLanguageChange('javascript')}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-3 py-1 rounded hover:bg-gray-800 transition-colors"
+                >
+                  JavaScript
+                </motion.button>
+                <motion.button
+                  onClick={() => handleCodeLanguageChange('rest')}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-3 py-1 rounded hover:bg-gray-800 transition-colors"
+                >
+                  REST API
+                </motion.button>
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <button className="p-2 hover:bg-gray-800 rounded transition-colors">
+              <motion.button
+                onClick={() => console.log('Copy code')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 hover:bg-gray-800 rounded transition-colors"
+              >
                 <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="p-2 hover:bg-gray-800 rounded transition-colors">
+              </motion.button>
+              <motion.button
+                onClick={() => console.log('View on GitHub')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 hover:bg-gray-800 rounded transition-colors"
+              >
                 <Github className="w-4 h-4" />
-              </button>
+              </motion.button>
             </div>
           </div>
           
@@ -304,7 +382,8 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.3 + index * 0.1 }}
-                className="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-colors"
+                className="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-colors cursor-pointer"
+                onClick={() => console.log(`Learn more about ${feature.title}`)}
               >
                 <div className="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                   {feature.icon}
@@ -314,7 +393,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Testimonials */}
         <motion.div
@@ -337,7 +416,8 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.5 + index * 0.1 }}
-                className="bg-gray-900 border border-gray-800 rounded-2xl p-8"
+                className="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-colors cursor-pointer"
+                onClick={() => console.log(`Read full case study for ${testimonial.company}`)}
               >
                 <div className="mb-6">
                   <div className="flex items-center space-x-1 mb-4">
@@ -360,7 +440,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* CTA Section */}
         <motion.div
@@ -383,6 +463,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               Start Free Trial
             </motion.button>
             <motion.button
+              onClick={handleContactSales}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border border-white/30 text-white rounded-lg font-semibold text-lg hover:border-white/50 transition-colors"

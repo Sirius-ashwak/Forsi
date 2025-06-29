@@ -9,8 +9,7 @@ interface ChatInterfaceProps {
 export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
   const [message, setMessage] = useState('');
   const [isRecording, setIsRecording] = useState(false);
-
-  const messages = [
+  const [messages, setMessages] = useState([
     {
       id: 1,
       type: 'assistant',
@@ -29,7 +28,43 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
       content: "I've analyzed your APAC supply chain and found several key insights:\n\n🔴 **High Risk Areas:**\n• Weather disruptions in Southeast Asia (Typhoon season)\n• Port congestion in Shanghai and Singapore\n• Semiconductor shortage affecting electronics suppliers\n\n🟡 **Medium Risk:**\n• Currency fluctuations in emerging markets\n• Labor shortages in manufacturing hubs\n\n✅ **Recommendations:**\n• Diversify suppliers across multiple countries\n• Increase safety stock for critical components\n• Consider alternative shipping routes\n\nWould you like me to generate a detailed risk mitigation plan?",
       timestamp: '10:33 AM'
     }
-  ];
+  ]);
+
+  const handleSendMessage = () => {
+    if (!message.trim()) return;
+    
+    const newMessage = {
+      id: messages.length + 1,
+      type: 'user' as const,
+      content: message,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    
+    setMessages(prev => [...prev, newMessage]);
+    setMessage('');
+    
+    // Simulate AI response
+    setTimeout(() => {
+      const aiResponse = {
+        id: messages.length + 2,
+        type: 'assistant' as const,
+        content: "I'm analyzing your request. Based on current data patterns, I can provide insights on supply chain optimization, risk assessment, and predictive analytics. What specific area would you like me to focus on?",
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      setMessages(prev => [...prev, aiResponse]);
+    }, 1500);
+  };
+
+  const handleQuickSuggestion = (suggestion: string) => {
+    setMessage(suggestion);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
 
   return (
     <motion.div
@@ -58,6 +93,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              onClick={() => console.log('More options clicked')}
               className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
             >
               <MoreVertical className="w-4 h-4 text-gray-400" />
@@ -146,12 +182,13 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
           {/* Quick suggestions */}
           <div className="flex flex-wrap gap-2">
             {[
-              { text: 'Risk analysis', icon: <AlertTriangle className="w-3 h-3" /> },
-              { text: 'Track shipments', icon: <Truck className="w-3 h-3" /> },
-              { text: 'Demand forecast', icon: <TrendingUp className="w-3 h-3" /> }
+              { text: 'Analyze supply chain risks', icon: <AlertTriangle className="w-3 h-3" /> },
+              { text: 'Track current shipments', icon: <Truck className="w-3 h-3" /> },
+              { text: 'Generate demand forecast', icon: <TrendingUp className="w-3 h-3" /> }
             ].map((suggestion) => (
               <motion.button
                 key={suggestion.text}
+                onClick={() => handleQuickSuggestion(suggestion.text)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center space-x-1 px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded-lg text-xs text-gray-300 transition-colors"
@@ -168,6 +205,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
                 placeholder="Ask about supply chain performance, risks, or optimization..."
                 className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 pr-12 text-sm focus:outline-none focus:border-gray-600 focus:ring-2 focus:ring-gray-600/20 resize-none transition-all"
                 rows={1}
@@ -176,6 +214,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={() => console.log('Attach file clicked')}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <Paperclip className="w-4 h-4 text-gray-400" />
@@ -197,6 +236,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
               </motion.button>
               
               <motion.button
+                onClick={handleSendMessage}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 disabled={!message.trim()}
