@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mic, MicOff, Minimize2, Sparkles, Zap, Brain, Activity } from 'lucide-react';
+import { Send, Mic, MicOff, Minimize2, Zap, Brain } from 'lucide-react';
 import { ChatMessage } from '../../types';
 import { mockChatMessages, generateAIResponse } from '../../api-mocks/graniteAI';
 
@@ -35,7 +35,7 @@ export const AIAssistant: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const aiResponse = await generateAIResponse(inputValue);
+      const aiResponse = await generateAIResponse();
       const assistantMessage: ChatMessage = {
         id: `msg-${Date.now() + 1}`,
         type: 'assistant',

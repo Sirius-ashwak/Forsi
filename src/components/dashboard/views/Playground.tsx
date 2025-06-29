@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Save, Share, Settings, Copy, Download, BarChart3, TrendingUp } from 'lucide-react';
+import { Play, Save, Share, Settings, Copy, Download, TrendingUp } from 'lucide-react';
 
 export const Playground: React.FC = () => {
   const [code, setCode] = useState(`# Forsi Analytics Playground

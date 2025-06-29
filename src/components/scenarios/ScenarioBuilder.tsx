@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, X, Play, Save, Zap, CloudRain, Users, TrendingDown, Building, Brain, Activity } from 'lucide-react';
-import { DisruptionEvent, Scenario } from '../../types';
+import { DisruptionEvent } from '../../types';
 
 const disruptionTypes = [
   { 
@@ -46,7 +46,7 @@ export const ScenarioBuilder: React.FC = () => {
       title: `${typeData?.name} Event`,
       type: type as any,
       severity: 'medium',
-      location: [0, 0],
+      location: [0, 0] as [number, number],
       affectedNodes: [],
       startDate: new Date().toISOString(),
       impact: {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { IntroPage } from './components/intro/IntroPage';
 import { Dashboard } from './components/dashboard/Dashboard';
 

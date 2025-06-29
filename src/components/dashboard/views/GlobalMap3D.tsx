@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, Stars } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
-import { Satellite, Cloud, Eye, EyeOff, Globe, MapPin, Activity, AlertTriangle, TrendingUp, Zap } from 'lucide-react';
-import { mockSupplyChainNodes, mockShippingRoutes } from '../../../api-mocks/graniteAI';
+import { Satellite, Cloud, Globe, MapPin, Activity, TrendingUp, Zap } from 'lucide-react';
+import { mockSupplyChainNodes } from '../../../api-mocks/graniteAI';
 import { SupplyChainNode } from '../../../types';
 
 interface NodeMarkerProps {
@@ -17,20 +17,20 @@ const NodeMarker: React.FC<NodeMarkerProps> = ({ node, onClick }) => {
   const ringRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current) {
       if (node.status === 'disrupted') {
         meshRef.current.rotation.y += 0.03;
-        meshRef.current.scale.setScalar(1 + Math.sin(state.clock.elapsedTime * 4) * 0.15);
+        meshRef.current.scale.setScalar(1 + Math.sin(Date.now() * 0.004) * 0.15);
       } else {
         meshRef.current.rotation.y += 0.008;
-        meshRef.current.scale.setScalar(1 + Math.sin(state.clock.elapsedTime * 2) * 0.05);
+        meshRef.current.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.05);
       }
     }
 
     if (ringRef.current && node.status === 'disrupted') {
       ringRef.current.rotation.z += 0.02;
-      ringRef.current.scale.setScalar(1 + Math.sin(state.clock.elapsedTime * 3) * 0.2);
+      ringRef.current.scale.setScalar(1 + Math.sin(Date.now() * 0.003) * 0.2);
     }
   });
 
@@ -335,7 +335,7 @@ const RealEarth: React.FC<{ satelliteMode: boolean }> = ({ satelliteMode }) => {
     setCloudsTexture(cloudsTex);
   }, [satelliteMode]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (earthRef.current) {
       earthRef.current.rotation.y += 0.002;
     }
@@ -401,7 +401,7 @@ const RealEarth: React.FC<{ satelliteMode: boolean }> = ({ satelliteMode }) => {
 const QuantumParticleField: React.FC = () => {
   const pointsRef = useRef<THREE.Points>(null);
   
-  useFrame((state) => {
+  useFrame(() => {
     if (pointsRef.current) {
       pointsRef.current.rotation.y += 0.0008;
       pointsRef.current.rotation.x += 0.0003;

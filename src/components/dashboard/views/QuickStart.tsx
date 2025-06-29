@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Truck, Factory, BarChart3, Globe, Database, FileSpreadsheet, Zap, Shield } from 'lucide-react';
+import { Truck, Factory, Globe, FileSpreadsheet, Zap, Shield } from 'lucide-react';
 
 export const QuickStart: React.FC = () => {
   const integrationTypes = [

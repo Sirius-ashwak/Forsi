@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, TrendingDown, AlertTriangle, DollarSign, Activity, Shield, Zap, Brain } from 'lucide-react';
+import { TrendingUp, TrendingDown, AlertTriangle, DollarSign, Activity, Shield, Zap } from 'lucide-react';
 
 interface KPICardProps {
   title: string;

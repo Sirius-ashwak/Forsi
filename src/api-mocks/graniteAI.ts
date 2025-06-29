@@ -1,11 +1,11 @@
-import { ChatMessage, DisruptionEvent, Scenario } from '../types';
+import { ChatMessage, Scenario } from '../types';
 
 export const mockSupplyChainNodes = [
   {
     id: 'factory-1',
     name: 'Shanghai Manufacturing Hub',
     type: 'factory' as const,
-    coordinates: [31.2304, 121.4737, 0],
+    coordinates: [31.2304, 121.4737, 0] as [number, number, number],
     status: 'operational' as const,
     capacity: 10000,
     utilizationRate: 0.85,
@@ -15,7 +15,7 @@ export const mockSupplyChainNodes = [
     id: 'port-1',
     name: 'Port of Los Angeles',
     type: 'port' as const,
-    coordinates: [33.7361, -118.2639, 0],
+    coordinates: [33.7361, -118.2639, 0] as [number, number, number],
     status: 'at-risk' as const,
     capacity: 50000,
     utilizationRate: 0.95,
@@ -25,7 +25,7 @@ export const mockSupplyChainNodes = [
     id: 'warehouse-1',
     name: 'Chicago Distribution Center',
     type: 'warehouse' as const,
-    coordinates: [41.8781, -87.6298, 0],
+    coordinates: [41.8781, -87.6298, 0] as [number, number, number],
     status: 'operational' as const,
     capacity: 25000,
     utilizationRate: 0.72,
@@ -35,7 +35,7 @@ export const mockSupplyChainNodes = [
     id: 'supplier-1',
     name: 'Munich Precision Components',
     type: 'supplier' as const,
-    coordinates: [48.1351, 11.5820, 0],
+    coordinates: [48.1351, 11.5820, 0] as [number, number, number],
     status: 'disrupted' as const,
     capacity: 5000,
     utilizationRate: 0.45,
@@ -76,7 +76,7 @@ export const mockDisruptions = [
     title: 'Severe Weather System - Pacific Coast',
     type: 'weather' as const,
     severity: 'high' as const,
-    location: [34.0522, -118.2437],
+    location: [34.0522, -118.2437] as [number, number],
     affectedNodes: ['port-1'],
     startDate: '2025-01-12T08:00:00Z',
     estimatedEndDate: '2025-01-15T08:00:00Z',
@@ -91,7 +91,7 @@ export const mockDisruptions = [
     title: 'Labor Strike - European Manufacturing',
     type: 'political' as const,
     severity: 'critical' as const,
-    location: [48.1351, 11.5820],
+    location: [48.1351, 11.5820] as [number, number],
     affectedNodes: ['supplier-1'],
     startDate: '2025-01-10T06:00:00Z',
     impact: {
@@ -152,7 +152,7 @@ export const mockScenarios: Scenario[] = [
   }
 ];
 
-export const generateAIResponse = async (message: string): Promise<string> => {
+export const generateAIResponse = async (): Promise<string> => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1500));
   

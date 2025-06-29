@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { 
   Globe, 
   Settings, 
-  BarChart3, 
   AlertTriangle,
   Map,
   Users,
