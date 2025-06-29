@@ -10,7 +10,6 @@ import {
   FileText, 
   Settings,
   ChevronRight,
-  BarChart3,
   Globe,
   TrendingUp,
   Map
@@ -31,6 +30,7 @@ const navigation = [
   { id: 'demand-forecast', name: 'Demand forecasting', icon: TrendingUp },
   { id: 'performance-metrics', name: 'Performance metrics', icon: Eye, hasSubmenu: true },
   { id: 'report-templates', name: 'Report templates', icon: FileText },
+  { id: 'settings', name: 'Settings', icon: Settings },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) => {
@@ -58,7 +58,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) =>
         
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <BarChart3 className="w-4 h-4 text-gray-400" />
+            <Globe className="w-4 h-4 text-gray-400" />
             <span className="text-sm text-gray-400">1,247 nodes monitored</span>
           </div>
           <motion.button
