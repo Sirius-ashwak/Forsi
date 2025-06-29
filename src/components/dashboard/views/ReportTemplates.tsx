@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download, Eye, Edit, Copy, Plus, Calendar, Filter, Search } from 'lucide-react';
+import { FileText, Download, Eye, Edit, Copy, Plus, Calendar, Filter, Search, TrendingUp } from 'lucide-react';
 
 export const ReportTemplates: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
