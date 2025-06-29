@@ -63,7 +63,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
             <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
               <Zap className="w-5 h-5 text-black" />
             </div>
-            <span className="text-xl font-semibold">Supply Chain Navigator</span>
+            <span className="text-xl font-semibold">Forsi</span>
           </div>
         </div>
         
@@ -247,11 +247,11 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
             </div>
             
             <div className="ml-8">
-              <div className="text-purple-400 mb-2">from <span className="text-blue-400">supply_chain_navigator</span> <span className="text-purple-400">import</span> <span className="text-yellow-400">SupplyChainClient</span></div>
-              <div className="text-purple-400 mb-2">from <span className="text-blue-400">supply_chain_navigator.analytics</span> <span className="text-purple-400">import</span> <span className="text-yellow-400">RiskAnalytics</span></div>
-              <div className="text-purple-400 mb-2">from <span className="text-blue-400">supply_chain_navigator.monitoring</span> <span className="text-purple-400">import</span> <span className="text-yellow-400">RealTimeMonitor</span></div>
+              <div className="text-purple-400 mb-2">from <span className="text-blue-400">forsi</span> <span className="text-purple-400">import</span> <span className="text-yellow-400">SupplyChainClient</span></div>
+              <div className="text-purple-400 mb-2">from <span className="text-blue-400">forsi.analytics</span> <span className="text-purple-400">import</span> <span className="text-yellow-400">RiskAnalytics</span></div>
+              <div className="text-purple-400 mb-2">from <span className="text-blue-400">forsi.monitoring</span> <span className="text-purple-400">import</span> <span className="text-yellow-400">RealTimeMonitor</span></div>
               <div className="mb-2"></div>
-              <div className="text-gray-500 mb-2"># Initialize Supply Chain Navigator client</div>
+              <div className="text-gray-500 mb-2"># Initialize Forsi client</div>
               <div className="text-blue-400 mb-2">client <span className="text-white">=</span> <span className="text-yellow-400">SupplyChainClient</span>(<span className="text-green-400">api_key</span>=<span className="text-green-400">"YOUR_API_KEY"</span>)</div>
               <div className="text-blue-400 mb-2">monitor <span className="text-white">=</span> <span className="text-yellow-400">RealTimeMonitor</span>(<span className="text-green-400">client</span>)</div>
               <div className="text-blue-400 mb-2">analytics <span className="text-white">=</span> <span className="text-yellow-400">RiskAnalytics</span>(<span className="text-green-400">client</span>)</div>
@@ -371,7 +371,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Supply Chain?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join hundreds of enterprises already using Supply Chain Navigator to build more resilient operations.
+            Join hundreds of enterprises already using Forsi to build more resilient operations.
           </p>
           <div className="flex items-center justify-center space-x-4">
             <motion.button

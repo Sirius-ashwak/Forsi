@@ -22,7 +22,7 @@ export const QuickStart: React.FC = () => {
         <div className="text-center md:text-left">
           <h1 className="text-4xl font-bold mb-4">Quick Start</h1>
           <p className="text-gray-400 text-lg max-w-3xl">
-            Set up Supply Chain AI and connect your systems to start monitoring your global operations
+            Set up Forsi and connect your systems to start monitoring your global operations
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export const QuickStart: React.FC = () => {
             <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center font-bold">
               2
             </div>
-            <h2 className="text-2xl font-semibold">Chat with Supply Chain AI Assistant</h2>
+            <h2 className="text-2xl font-semibold">Chat with Forsi Assistant</h2>
           </div>
           
           <div className="ml-12">
@@ -127,10 +127,10 @@ export const QuickStart: React.FC = () => {
               <div className="flex items-center justify-between p-6 border-b border-gray-800 bg-gray-850">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                    <span className="text-black text-lg font-bold">AI</span>
+                    <span className="text-black text-lg font-bold">F</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Supply Chain AI Assistant</h3>
+                    <h3 className="font-semibold text-lg">Forsi Assistant</h3>
                     <p className="text-sm text-gray-400">Analyze supply chain performance and predict disruptions</p>
                   </div>
                 </div>
@@ -142,10 +142,10 @@ export const QuickStart: React.FC = () => {
                 <div className="bg-gray-800 rounded-xl p-6 mb-6">
                   <div className="text-center space-y-4">
                     <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center mx-auto">
-                      <span className="text-black text-3xl font-bold">AI</span>
+                      <span className="text-black text-3xl font-bold">F</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Welcome to Supply Chain AI</h4>
+                      <h4 className="text-xl font-semibold mb-2">Welcome to Forsi</h4>
                       <p className="text-gray-400 max-w-md mx-auto leading-relaxed">
                         I can help you monitor global operations, predict supply disruptions, optimize logistics routes, and analyze supplier performance. What would you like to explore?
                       </p>
@@ -215,7 +215,7 @@ export const QuickStart: React.FC = () => {
               <h3 className="font-semibold text-lg mb-2">Supply Chain Security</h3>
               <p className="text-gray-400 leading-relaxed">
                 Start by connecting your primary ERP system to get comprehensive visibility into your supply chain. 
-                Our AI will analyze patterns, identify potential risks, and provide actionable insights to improve resilience and efficiency across your global operations.
+                Forsi will analyze patterns, identify potential risks, and provide actionable insights to improve resilience and efficiency across your global operations.
               </p>
             </div>
           </div>

@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 import { Play, Save, Share, Settings, Copy, Download, BarChart3, TrendingUp } from 'lucide-react';
 
 export const Playground: React.FC = () => {
-  const [code, setCode] = useState(`# Supply Chain AI Analytics Playground
+  const [code, setCode] = useState(`# Forsi Analytics Playground
 # Test your supply chain analytics and monitoring queries here
 
-from supply_chain_ai import SupplyChainClient
-from supply_chain_ai.analytics import RiskAnalytics, DemandForecasting
-from supply_chain_ai.monitoring import SupplierMonitor
+from forsi import SupplyChainClient
+from forsi.analytics import RiskAnalytics, DemandForecasting
+from forsi.monitoring import SupplierMonitor
 
-# Initialize Supply Chain AI client
+# Initialize Forsi client
 client = SupplyChainClient(
     api_key="YOUR_API_KEY",
     region="global"
@@ -71,7 +71,7 @@ print(f"Active Alerts: {len(alerts)} critical issues detected")`);
       <div className="p-6 border-b border-gray-800 bg-gray-900">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Supply Chain Analytics Playground</h1>
+            <h1 className="text-3xl font-bold mb-2">Forsi Analytics Playground</h1>
             <p className="text-gray-400">Test and experiment with supply chain analytics, risk assessment, and forecasting</p>
           </div>
           <div className="flex items-center space-x-3">
@@ -200,8 +200,8 @@ print(f"Active Alerts: {len(alerts)} critical issues detected")`);
             <div className="space-y-4">
               {/* Console output */}
               <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm">
-                <div className="text-green-400 mb-2">$ python supply_chain_analysis.py</div>
-                <div className="text-gray-400 mb-4">Initializing Supply Chain AI client...</div>
+                <div className="text-green-400 mb-2">$ python forsi_analysis.py</div>
+                <div className="text-gray-400 mb-4">Initializing Forsi client...</div>
                 <div className="text-blue-400 mb-2">Connecting to global analytics engine...</div>
                 <div className="text-gray-300 space-y-1">
                   <div>✓ Client initialized successfully</div>

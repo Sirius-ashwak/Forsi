@@ -48,7 +48,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) =>
             <Zap className="w-6 h-6 text-black" />
           </div>
           <div>
-            <span className="text-xl font-bold">Supply Chain AI</span>
+            <span className="text-xl font-bold">Forsi</span>
             <div className="flex items-center space-x-2 mt-1">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               <span className="text-xs text-gray-400">Global Operations</span>
@@ -171,7 +171,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) =>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xs font-bold">S</span>
+              <span className="text-white text-xs font-bold">F</span>
             </div>
             <Settings className="w-4 h-4 text-gray-400" />
           </div>

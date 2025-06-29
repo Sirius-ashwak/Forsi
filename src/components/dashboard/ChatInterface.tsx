@@ -14,7 +14,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
     {
       id: 1,
       type: 'assistant',
-      content: "Hello! I'm your Supply Chain AI assistant. I can help you monitor global operations, analyze risk levels, predict demand, optimize logistics routes, and provide insights on supplier performance. What would you like to explore today?",
+      content: "Hello! I'm your Forsi assistant. I can help you monitor global operations, analyze risk levels, predict demand, optimize logistics routes, and provide insights on supplier performance. What would you like to explore today?",
       timestamp: '10:30 AM'
     },
     {
@@ -44,10 +44,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-              <span className="text-black text-lg font-bold">AI</span>
+              <span className="text-black text-lg font-bold">F</span>
             </div>
             <div>
-              <h3 className="font-semibold text-lg">Supply Chain AI</h3>
+              <h3 className="font-semibold text-lg">Forsi Assistant</h3>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 <p className="text-sm text-gray-400">Monitoring 1,247 nodes</p>
@@ -87,7 +87,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
             {msg.type === 'assistant' && (
               <div className="flex items-start space-x-3 max-w-xs">
                 <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-black text-xs font-bold">AI</span>
+                  <span className="text-black text-xs font-bold">F</span>
                 </div>
                 <div className="bg-gray-900 rounded-xl rounded-tl-md p-4 border border-gray-800">
                   <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-line">
@@ -116,7 +116,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ onClose }) => {
           className="flex items-start space-x-3"
         >
           <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <span className="text-black text-xs font-bold">AI</span>
+            <span className="text-black text-xs font-bold">F</span>
           </div>
           <div className="bg-gray-900 rounded-xl rounded-tl-md p-4 border border-gray-800">
             <div className="flex space-x-1">
