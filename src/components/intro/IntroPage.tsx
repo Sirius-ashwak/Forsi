@@ -237,16 +237,20 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
           <p className="text-center text-gray-400 mb-8">Trusted by leading enterprises worldwide</p>
           <div className="flex items-center justify-center space-x-8 md:space-x-12 overflow-x-auto pb-4">
             {integrationLogos.map((logo, index) => (
-              <motion.button
+              <motion.div
                 key={logo.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                onClick={() => console.log(`Learn more about ${logo.name} integration`)}
-                className="flex-shrink-0 w-16 h-16 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center hover:border-gray-700 transition-colors cursor-pointer"
+                className="flex-shrink-0"
               >
-                <span className="text-2xl">{logo.icon}</span>
-              </motion.button>
+                <button
+                  onClick={() => console.log(`Learn more about ${logo.name} integration`)}
+                  className="w-16 h-16 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center hover:border-gray-700 transition-colors cursor-pointer"
+                >
+                  <span className="text-2xl">{logo.icon}</span>
+                </button>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -393,7 +397,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Testimonials */}
         <motion.div
@@ -440,7 +444,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA Section */}
         <motion.div
