@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Home,
   Globe, 
   Settings, 
   BarChart3, 
@@ -20,13 +19,12 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { id: 'dashboard', name: 'Dashboard', icon: Home, description: 'Main Overview' },
   { id: 'nexus', name: 'Global Map', icon: Globe, description: '3D Supply Chain View' },
-  { id: 'insights', name: 'Analytics', icon: Brain, description: 'AI-Powered Insights' },
+  { id: 'insights', name: 'Insights', icon: Brain, description: 'AI-Powered Analytics' },
   { id: 'quantum', name: 'Scenarios', icon: Map, description: 'What-If Analysis' },
   { id: 'chronospectrum', name: 'Timeline', icon: Activity, description: 'Event History' },
   { id: 'radar', name: 'Risk Monitor', icon: AlertTriangle, description: 'Threat Detection' },
-  { id: 'network', name: 'Suppliers', icon: Users, description: 'Supplier Network' },
+  { id: 'network', name: 'Network', icon: Users, description: 'Supplier Network' },
   { id: 'intelligence', name: 'Reports', icon: FileText, description: 'Strategic Reports' },
   { id: 'settings', name: 'Settings', icon: Settings, description: 'Configuration' },
 ];
@@ -51,7 +49,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) =>
           </div>
           <div>
             <h1 className="text-2xl font-semibold text-slate-900">Supply Chain</h1>
-            <p className="text-sm text-slate-500 font-medium">Resilience Navigator</p>
+            <p className="text-sm text-slate-500 font-medium">Resilience Platform</p>
           </div>
         </motion.div>
       </div>
@@ -130,7 +128,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) =>
           </div>
           <div>
             <p className="text-base font-semibold text-slate-900">AI Assistant</p>
-            <p className="text-sm text-slate-500">Online & Ready</p>
+            <p className="text-sm text-slate-500">Online</p>
           </div>
           <div className="ml-auto">
             <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50" />
