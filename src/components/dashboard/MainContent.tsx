@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { QuickStart } from './views/QuickStart';
 import { ConnectedIntegrations } from './views/ConnectedIntegrations';
 import { Playground } from './views/Playground';
+import { GlobalMap3D } from './views/GlobalMap3D';
 
 interface MainContentProps {
   activeView: string;
@@ -17,6 +18,8 @@ export const MainContent: React.FC<MainContentProps> = ({ activeView }) => {
         return <ConnectedIntegrations />;
       case 'playground':
         return <Playground />;
+      case '3d-map':
+        return <GlobalMap3D />;
       default:
         return <QuickStart />;
     }

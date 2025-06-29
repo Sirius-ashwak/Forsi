@@ -12,7 +12,8 @@ import {
   ChevronRight,
   BarChart3,
   Globe,
-  TrendingUp
+  TrendingUp,
+  Map
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -24,6 +25,7 @@ const navigation = [
   { id: 'quick-start', name: 'Quick start', icon: Rocket },
   { id: 'connected-integrations', name: 'Connected systems', icon: Link },
   { id: 'playground', name: 'Analytics playground', icon: Play },
+  { id: '3d-map', name: '3D Global Map', icon: Map },
   { id: 'global-monitor', name: 'Global monitor', icon: Globe },
   { id: 'risk-assessment', name: 'Risk assessment', icon: Shield },
   { id: 'demand-forecast', name: 'Demand forecasting', icon: TrendingUp },
