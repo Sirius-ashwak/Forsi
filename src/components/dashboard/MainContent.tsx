@@ -9,6 +9,7 @@ import { RiskAssessment } from './views/RiskAssessment';
 import { DemandForecasting } from './views/DemandForecasting';
 import { PerformanceMetrics } from './views/PerformanceMetrics';
 import { ReportTemplates } from './views/ReportTemplates';
+import { Settings } from './views/Settings';
 
 interface MainContentProps {
   activeView: string;
@@ -36,24 +37,7 @@ export const MainContent: React.FC<MainContentProps> = ({ activeView }) => {
       case 'report-templates':
         return <ReportTemplates />;
       case 'settings':
-        return (
-          <div className="p-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h1 className="text-4xl font-bold mb-4">Settings</h1>
-              <p className="text-gray-400 text-lg mb-8">Configure your Forsi platform preferences</p>
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-12">
-                <div className="text-6xl mb-4">⚙️</div>
-                <h3 className="text-xl font-semibold mb-2">Settings Panel</h3>
-                <p className="text-gray-400">Settings interface will be implemented here</p>
-              </div>
-            </motion.div>
-          </div>
-        );
+        return <Settings />;
       default:
         return <QuickStart />;
     }
